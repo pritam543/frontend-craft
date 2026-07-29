@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website | FrontendCraft</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0f19; color: #e2e8f0; height: 100vh; display: flex; flex-direction: column; }
+
+        .top-bar {
+            background-color: #111827;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1f2937;
+        }
+
+        .back-btn { color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .tabs { display: flex; gap: 10px; }
+
+        .tab-btn {
+            background-color: #1f2937;
+            color: #94a3b8;
+            border: 1px solid #374151;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tab-btn.active { background-color: #38bdf8; color: #0b0f19; border-color: #38bdf8; }
+
+        .content-area { flex: 1; position: relative; }
+        .tab-content { display: none; width: 100%; height: 100%; }
+        .tab-content.active { display: block; }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .code-container { padding: 25px; height: 100%; overflow-y: auto; background-color: #0d1117; }
+        .code-box { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 25px; }
+        .code-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .code-title { color: #58a6ff; font-weight: 600; }
+        .copy-btn { background-color: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
+        .copy-btn:hover { background-color: #30363d; color: #fff; }
+        pre { white-space: pre-wrap; font-family: monospace; font-size: 13px; color: #e6edf3; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../../projects.html" class="back-btn">⬅ Back to Projects List</a>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('preview-tab', this)">🌐 Live Preview</button>
+            <button class="tab-btn" onclick="switchTab('code-tab', this)">💻 View Source Code</button>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <!-- Live Preview Tab -->
+        <div id="preview-tab" class="tab-content active">
+            <iframe src="demo.html"></iframe>
+        </div>
+
+        <!-- Code Viewer Tab -->
+        <div id="code-tab" class="tab-content">
+            <div class="code-container">
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">📄 index.html</span>
+                        <button class="copy-btn" onclick="copyCode('html-code')">Copy HTML</button>
+                    </div>
+                    <pre><code id="html-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Personal Portfolio&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header class="navbar"&gt;
+        &lt;div class="logo"&gt;Aman&lt;span class="highlight"&gt;.dev&lt;/span&gt;&lt;/div&gt;
+        &lt;nav class="nav-links"&gt;
+            &lt;a href="#about"&gt;About&lt;/a&gt;
+            &lt;a href="#skills"&gt;Skills&lt;/a&gt;
+            &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;section class="hero"&gt;
+        &lt;h1&gt;Hi, I'm &lt;span class="highlight"&gt;Aman Sharma&lt;/span&gt;&lt;/h1&gt;
+        &lt;p&gt;Frontend Developer &amp; UI Learner&lt;/p&gt;
+        &lt;a href="#contact" class="btn"&gt;Hire Me&lt;/a&gt;
+    &lt;/section&gt;
+
+    &lt;section id="skills" class="skills-section"&gt;
+        &lt;h2&gt;My Skills&lt;/h2&gt;
+        &lt;div class="skills-grid"&gt;
+            &lt;div class="skill-card"&gt;HTML5&lt;/div&gt;
+            &lt;div class="skill-card"&gt;CSS3&lt;/div&gt;
+            &lt;div class="skill-card"&gt;Flexbox&lt;/div&gt;
+            &lt;div class="skill-card"&gt;Responsive UI&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id="contact" class="contact-section"&gt;
+        &lt;h2&gt;Contact Me&lt;/h2&gt;
+        &lt;form class="contact-form"&gt;
+            &lt;input type="text" placeholder="Your Name" required&gt;
+            &lt;input type="email" placeholder="Your Email" required&gt;
+            &lt;textarea placeholder="Your Message" rows="4" required&gt;&lt;/textarea&gt;
+            &lt;button type="submit" class="btn"&gt;Send Message&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/section&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2026 Aman Sharma | Built with HTML &amp; CSS&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">🎨 style.css</span>
+                        <button class="copy-btn" onclick="copyCode('css-code')">Copy CSS</button>
+                    </div>
+                    <pre><code id="css-code">* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+body { background-color: #0f172a; color: #f8fafc; line-height: 1.6; }
+
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: #1e293b; }
+.logo { font-size: 22px; font-weight: bold; }
+.highlight { color: #38bdf8; }
+.nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 20px; }
+.nav-links a:hover { color: #38bdf8; }
+
+.hero { text-align: center; padding: 70px 20px; }
+.hero h1 { font-size: 36px; margin-bottom: 10px; }
+.hero p { color: #94a3b8; font-size: 18px; margin-bottom: 20px; }
+.btn { display: inline-block; background-color: #38bdf8; color: #0f172a; padding: 10px 22px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+
+.skills-section { background-color: #1e293b; padding: 50px 8%; text-align: center; }
+.skills-section h2 { color: #38bdf8; margin-bottom: 25px; }
+.skills-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+.skill-card { background-color: #0f172a; padding: 12px 25px; border-radius: 6px; border: 1px solid #334155; }
+
+.contact-section { padding: 50px 20px; text-align: center; }
+.contact-section h2 { color: #38bdf8; margin-bottom: 20px; }
+.contact-form { max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+.contact-form input, .contact-form textarea { padding: 12px; background-color: #1e293b; border: 1px solid #334155; color: #fff; border-radius: 5px; }
+
+footer { text-align: center; padding: 20px; background-color: #1e293b; color: #64748b; font-size: 14px; }</code></pre>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function copyCode(id) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText);
+            alert("Code copied successfully! 🚀");
+        }
+    </script>
+</body>
+</html>

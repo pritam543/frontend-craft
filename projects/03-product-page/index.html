@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 03: E-Commerce Product Page | FrontendCraft</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0f19; color: #e2e8f0; height: 100vh; display: flex; flex-direction: column; }
+
+        .top-bar {
+            background-color: #111827;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1f2937;
+        }
+
+        .back-btn { color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .tabs { display: flex; gap: 10px; }
+
+        .tab-btn {
+            background-color: #1f2937;
+            color: #94a3b8;
+            border: 1px solid #374151;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tab-btn.active { background-color: #38bdf8; color: #0b0f19; border-color: #38bdf8; }
+
+        .content-area { flex: 1; position: relative; }
+        .tab-content { display: none; width: 100%; height: 100%; }
+        .tab-content.active { display: block; }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .code-container { padding: 25px; height: 100%; overflow-y: auto; background-color: #0d1117; }
+        .code-box { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 25px; }
+        .code-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .code-title { color: #58a6ff; font-weight: 600; }
+        .copy-btn { background-color: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
+        .copy-btn:hover { background-color: #30363d; color: #fff; }
+        pre { white-space: pre-wrap; font-family: monospace; font-size: 13px; color: #e6edf3; background: #0d1117; padding: 15px; border-radius: 6px; line-height: 1.5; border: 1px solid #21262d; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../../projects.html" class="back-btn">⬅ Back to Projects List</a>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('preview-tab', this)">🌐 Live Preview</button>
+            <button class="tab-btn" onclick="switchTab('code-tab', this)">💻 View Source Code</button>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <!-- Live Preview Tab -->
+        <div id="preview-tab" class="tab-content active">
+            <iframe src="demo.html"></iframe>
+        </div>
+
+        <!-- Code Viewer Tab -->
+        <div id="code-tab" class="tab-content">
+            <div class="code-container">
+                
+                <!-- COMPLETE HTML CODE -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">📄 index.html</span>
+                        <button class="copy-btn" onclick="copyCode('html-code')">Copy HTML</button>
+                    </div>
+                    <pre><code id="html-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Wireless Gaming Headphones | Product Page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- Header Navbar --&gt;
+    &lt;header class="navbar"&gt;
+        &lt;div class="logo"&gt;Tech&lt;span&gt;Gear&lt;/span&gt; ⚡&lt;/div&gt;
+        &lt;nav class="nav-links"&gt;
+            &lt;a href="#features"&gt;Features&lt;/a&gt;
+            &lt;a href="#specs"&gt;Specs&lt;/a&gt;
+            &lt;a href="#buy"&gt;Buy Now&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Product Showcase Hero Section --&gt;
+    &lt;section class="product-hero"&gt;
+        &lt;div class="product-image"&gt;
+            &lt;img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Gaming Headphones"&gt;
+        &lt;/div&gt;
+
+        &lt;div class="product-details" id="buy"&gt;
+            &lt;span class="category-badge"&gt;New Launch 2026&lt;/span&gt;
+            &lt;h1&gt;Pro Wireless Gaming Headphones&lt;/h1&gt;
+            &lt;p class="description"&gt;Experience ultra-low latency audio, active noise cancellation, and up to 40 hours of battery life with ergonomic comfort.&lt;/p&gt;
+
+            &lt;div class="price-box"&gt;
+                &lt;span class="current-price"&gt;₹2,999&lt;/span&gt;
+                &lt;span class="old-price"&gt;₹4,999&lt;/span&gt;
+                &lt;span class="discount"&gt;(40% OFF)&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="buy-actions"&gt;
+                &lt;button class="btn btn-cart"&gt;Add to Cart 🛒&lt;/button&gt;
+                &lt;button class="btn btn-buy"&gt;Buy Now ⚡&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Key Features Grid Section --&gt;
+    &lt;section id="features" class="features-section"&gt;
+        &lt;h2&gt;Key Features&lt;/h2&gt;
+        &lt;div class="features-grid"&gt;
+            &lt;div class="feature-card"&gt;
+                &lt;h3&gt;🔊 Active Noise Cancellation&lt;/h3&gt;
+                &lt;p&gt;Block out background noise and focus purely on your game or music.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="feature-card"&gt;
+                &lt;h3&gt;🔋 40 Hours Battery&lt;/h3&gt;
+                &lt;p&gt;Play non-stop for days with fast Type-C charging support.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="feature-card"&gt;
+                &lt;h3&gt;🎙️ Detachable HD Mic&lt;/h3&gt;
+                &lt;p&gt;Crystal clear voice communication for multiplayer squad gaming.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 TechGear Electronics | 1 Year Warranty Included 🛡️&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <!-- COMPLETE CSS CODE -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">🎨 style.css</span>
+                        <button class="copy-btn" onclick="copyCode('css-code')">Copy CSS</button>
+                    </div>
+                    <pre><code id="css-code">* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background-color: #1e293b;
+    border-bottom: 2px solid #334155;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+.product-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 8%;
+    flex-wrap: wrap;
+}
+
+.product-image img {
+    max-width: 100%;
+    width: 380px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #334155;
+}
+
+.product-details {
+    max-width: 500px;
+}
+
+.category-badge {
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.product-details h1 {
+    font-size: 32px;
+    margin: 15px 0 10px;
+    color: #f8fafc;
+}
+
+.description {
+    color: #94a3b8;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.price-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.current-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.old-price {
+    font-size: 18px;
+    color: #64748b;
+    text-decoration: line-through;
+}
+
+.discount {
+    color: #4ade80;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.buy-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cart {
+    background-color: #334155;
+    color: #ffffff;
+}
+
+.btn-cart:hover {
+    background-color: #475569;
+}
+
+.btn-buy {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+.btn-buy:hover {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+.features-section {
+    padding: 50px 8%;
+    background-color: #1e293b;
+    text-align: center;
+}
+
+.features-section h2 {
+    color: #38bdf8;
+    margin-bottom: 30px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #0f172a;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    text-align: left;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    color: #f8fafc;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0f172a;
+    color: #64748b;
+    font-size: 14px;
+    border-top: 1px solid #1e293b;
+}</code></pre>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function copyCode(id) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText);
+            alert("Code copied successfully! 🚀");
+        }
+    </script>
+</body>
+</html>

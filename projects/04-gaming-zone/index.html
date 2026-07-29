@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End Game - Gaming Zone Showcase | FrontendCraft</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0f19; color: #e2e8f0; height: 100vh; display: flex; flex-direction: column; }
+
+        /* Top Bar Navigation */
+        .top-bar {
+            background-color: #111827;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1f2937;
+        }
+
+        .back-btn { color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .tabs { display: flex; gap: 10px; }
+
+        .tab-btn {
+            background-color: #1f2937;
+            color: #94a3b8;
+            border: 1px solid #374151;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tab-btn.active { background-color: #f59e0b; color: #0b0f19; border-color: #f59e0b; }
+
+        .content-area { flex: 1; position: relative; }
+        .tab-content { display: none; width: 100%; height: 100%; }
+        .tab-content.active { display: block; }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* Code Viewer Styling */
+        .code-container { padding: 25px; height: 100%; overflow-y: auto; background-color: #0d1117; }
+        .code-box { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 25px; }
+        .code-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .code-title { color: #fbbf24; font-weight: 600; }
+        .copy-btn { background-color: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
+        .copy-btn:hover { background-color: #30363d; color: #fff; }
+        pre { white-space: pre-wrap; font-family: monospace; font-size: 13px; color: #e6edf3; background: #0d1117; padding: 15px; border-radius: 6px; line-height: 1.5; border: 1px solid #21262d; }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="../../projects.html" class="back-btn">⬅ Back to Projects List</a>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('preview-tab', this)">🌐 Live Preview</button>
+            <button class="tab-btn" onclick="switchTab('code-tab', this)">💻 View Source Code</button>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <!-- Live Preview Tab -->
+        <div id="preview-tab" class="tab-content active">
+            <iframe src="demo.html"></iframe>
+        </div>
+
+        <!-- Code Viewer Tab -->
+        <div id="code-tab" class="tab-content">
+            <div class="code-container">
+                
+                <!-- COMPLETE HTML CODE BOX -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">📄 index.html (Student Version)</span>
+                        <button class="copy-btn" onclick="copyCode('html-code')">Copy HTML</button>
+                    </div>
+                    <pre><code id="html-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;End Game - Gaming Zone&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- Gaming Zone Header --&gt;
+    &lt;header class="navbar"&gt;
+        &lt;div class="logo"&gt;&lt;span class="highlight"&gt;END&lt;/span&gt; GAME 🎮&lt;/div&gt;
+        &lt;nav class="nav-links"&gt;
+            &lt;a href="#home"&gt;Home&lt;/a&gt;
+            &lt;a href="#games"&gt;Games&lt;/a&gt;
+            &lt;a href="#trending"&gt;Trending&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Gaming Hero Section --&gt;
+    &lt;section id="home" class="hero"&gt;
+        &lt;h1&gt;WELCOME TO THE &lt;span class="highlight"&gt;GAMING ZONE&lt;/span&gt;&lt;/h1&gt;
+        &lt;p&gt;Explore the ultimate collection of trending online games with stunning dark UI.&lt;/p&gt;
+        &lt;button class="btn-glow" id="playBtn"&gt;Play Now 🚀&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Featured Games Section --&gt;
+    &lt;section id="games" class="games-section"&gt;
+        &lt;h2&gt;Featured Games&lt;/h2&gt;
+        &lt;div class="game-grid"&gt;
+            &lt;div class="game-card"&gt;
+                &lt;h3&gt;Cyberpunk 2077&lt;/h3&gt;
+                &lt;p&gt;Action RPG Experience&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="game-card"&gt;
+                &lt;h3&gt;Valorant Arena&lt;/h3&gt;
+                &lt;p&gt;Tactical 5v5 Shooter&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="game-card"&gt;
+                &lt;h3&gt;Apex Warriors&lt;/h3&gt;
+                &lt;p&gt;Battle Royale Mayhem&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <!-- COMPLETE CSS CODE BOX -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">🎨 style.css</span>
+                        <button class="copy-btn" onclick="copyCode('css-code')">Copy CSS</button>
+                    </div>
+                    <pre><code id="css-code">* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b0f19;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: #111827;
+    border-bottom: 2px solid #1f2937;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.highlight {
+    color: #f59e0b;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f59e0b;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: radial-gradient(circle at center, #1e1b4b 0%, #0b0f19 100%);
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.btn-glow {
+    background-color: #f59e0b;
+    color: #0b0f19;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    transition: 0.3s;
+}
+
+.btn-glow:hover {
+    background-color: #d97706;
+    color: #fff;
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.7);
+}
+
+.games-section {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.games-section h2 {
+    color: #f59e0b;
+    margin-bottom: 30px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.game-card {
+    background-color: #111827;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+    transition: 0.3s;
+}
+
+.game-card:hover {
+    border-color: #f59e0b;
+    transform: translateY(-5px);
+}</code></pre>
+                </div>
+
+                <!-- COMPLETE JS CODE BOX (UPDATED) -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">⚡ script.js</span>
+                        <button class="copy-btn" onclick="copyCode('js-code')">Copy JS</button>
+                    </div>
+                    <pre><code id="js-code">// ===== Scroll Animation =====
+const fadeElements = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+fadeElements.forEach(el => observer.observe(el));
+
+
+// ===== Navigation Highlight on Scroll =====
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-item');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (scrollY >= sectionTop) current = section.getAttribute('id');
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').includes(current)) link.classList.add('active');
+  });
+});
+
+
+// ===== Smooth Scroll =====
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+
+// ===== Button Glow + Sound =====
+const buttons = document.querySelectorAll('.glow');
+const clickSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_0e29500ce7.mp3?filename=click-124467.mp3');
+
+buttons.forEach(btn => {
+  btn.addEventListener('mouseenter', () => btn.classList.add('active-glow'));
+  btn.addEventListener('mouseleave', () => btn.classList.remove('active-glow'));
+  btn.addEventListener('click', () => {
+    clickSound.currentTime = 0;
+    clickSound.play();
+  });
+});
+
+
+// ===== Email Subscribe Toast =====
+const form = document.querySelector('#subscribe-form');
+const toast = document.querySelector('#toast');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const email = document.querySelector('#email').value;
+  if (!email.includes('@')) {
+    toast.textContent = "❌ Please enter a valid email.";
+  } else {
+    toast.textContent = "✅ Thanks for subscribing, gamer!";
+  }
+  toast.classList.add('show-toast');
+  setTimeout(() => toast.classList.remove('show-toast'), 3000);
+});</code></pre>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function copyCode(id) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText);
+            alert("Code copied successfully! 🚀");
+        }
+    </script>
+</body>
+</html>

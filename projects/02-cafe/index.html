@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 02: Restaurant & Cafe Landing Page | FrontendCraft</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0f19; color: #e2e8f0; height: 100vh; display: flex; flex-direction: column; }
+
+        .top-bar {
+            background-color: #111827;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1f2937;
+        }
+
+        .back-btn { color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .tabs { display: flex; gap: 10px; }
+
+        .tab-btn {
+            background-color: #1f2937;
+            color: #94a3b8;
+            border: 1px solid #374151;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tab-btn.active { background-color: #f59e0b; color: #0b0f19; border-color: #f59e0b; }
+
+        .content-area { flex: 1; position: relative; }
+        .tab-content { display: none; width: 100%; height: 100%; }
+        .tab-content.active { display: block; }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* Code Viewer Styling */
+        .code-container { padding: 25px; height: 100%; overflow-y: auto; background-color: #0d1117; }
+        .code-box { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 25px; }
+        .code-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .code-title { color: #fbbf24; font-weight: 600; }
+        .copy-btn { background-color: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
+        .copy-btn:hover { background-color: #30363d; color: #fff; }
+        pre { white-space: pre-wrap; font-family: monospace; font-size: 13px; color: #e6edf3; background: #0d1117; padding: 15px; border-radius: 6px; line-height: 1.5; border: 1px solid #21262d; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../../projects.html" class="back-btn">⬅ Back to Projects List</a>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('preview-tab', this)">🌐 Live Preview</button>
+            <button class="tab-btn" onclick="switchTab('code-tab', this)">💻 View Source Code</button>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <!-- Live Preview Tab -->
+        <div id="preview-tab" class="tab-content active">
+            <iframe src="demo.html"></iframe>
+        </div>
+
+        <!-- Code Viewer Tab -->
+        <div id="code-tab" class="tab-content">
+            <div class="code-container">
+                
+                <!-- COMPLETE HTML CODE -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">📄 index.html</span>
+                        <button class="copy-btn" onclick="copyCode('html-code')">Copy HTML</button>
+                    </div>
+                    <pre><code id="html-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Aroma Cafe - Taste the Best Coffee&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- Navigation Header --&gt;
+    &lt;header class="navbar"&gt;
+        &lt;div class="logo"&gt;Aroma&lt;span&gt;Cafe&lt;/span&gt; ☕&lt;/div&gt;
+        &lt;nav class="nav-links"&gt;
+            &lt;a href="#home"&gt;Home&lt;/a&gt;
+            &lt;a href="#menu"&gt;Menu&lt;/a&gt;
+            &lt;a href="#hours"&gt;Timing&lt;/a&gt;
+            &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Hero Banner --&gt;
+    &lt;section id="home" class="hero"&gt;
+        &lt;h1&gt;Fresh Coffee &amp; Delicious Bakes&lt;/h1&gt;
+        &lt;p&gt;Start your day with our freshly brewed organic coffee and handmade pastries.&lt;/p&gt;
+        &lt;a href="#menu" class="btn"&gt;View Our Menu&lt;/a&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Food Menu Section --&gt;
+    &lt;section id="menu" class="menu-section"&gt;
+        &lt;h2&gt;Popular Menu Items&lt;/h2&gt;
+        &lt;div class="menu-grid"&gt;
+            &lt;div class="menu-card"&gt;
+                &lt;h3&gt;Espresso Supreme&lt;/h3&gt;
+                &lt;p&gt;Rich and strong single shot espresso made from Arabica beans.&lt;/p&gt;
+                &lt;span class="price"&gt;₹180&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="menu-card"&gt;
+                &lt;h3&gt;Caramel Latte&lt;/h3&gt;
+                &lt;p&gt;Steamed milk blended with espresso and sweet caramel drizzle.&lt;/p&gt;
+                &lt;span class="price"&gt;₹220&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="menu-card"&gt;
+                &lt;h3&gt;Chocolate Croissant&lt;/h3&gt;
+                &lt;p&gt;Flaky butter pastry stuffed with melted Belgian dark chocolate.&lt;/p&gt;
+                &lt;span class="price"&gt;₹150&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Opening Hours Table --&gt;
+    &lt;section id="hours" class="hours-section"&gt;
+        &lt;h2&gt;Opening Hours&lt;/h2&gt;
+        &lt;table class="hours-table"&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Day&lt;/th&gt;
+                &lt;th&gt;Timings&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Monday - Friday&lt;/td&gt;
+                &lt;td&gt;08:00 AM - 10:00 PM&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Saturday - Sunday&lt;/td&gt;
+                &lt;td&gt;09:00 AM - 11:30 PM&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;footer id="contact"&gt;
+        &lt;p&gt;© 2026 Aroma Cafe | Visit Us Today 📍 Main Market Street&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <!-- COMPLETE CSS CODE -->
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="code-title">🎨 style.css</span>
+                        <button class="copy-btn" onclick="copyCode('css-code')">Copy CSS</button>
+                    </div>
+                    <pre><code id="css-code">* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1c1917;
+    color: #f5f5f4;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background-color: #0c0a09;
+    border-bottom: 2px solid #292524;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #f5f5f4;
+}
+
+.logo span {
+    color: #f59e0b;
+}
+
+.nav-links a {
+    color: #a8a29e;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f59e0b;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80') center/cover;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #d6d3d1;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #f59e0b;
+    color: #0c0a09;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #d97706;
+}
+
+/* Menu Section */
+.menu-section {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.menu-section h2 {
+    color: #f59e0b;
+    margin-bottom: 30px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.menu-card {
+    background-color: #292524;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #44403c;
+    text-align: left;
+}
+
+.menu-card h3 {
+    color: #f5f5f4;
+    margin-bottom: 10px;
+}
+
+.menu-card p {
+    color: #a8a29e;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-weight: bold;
+    color: #f59e0b;
+    font-size: 18px;
+}
+
+/* Table Section */
+.hours-section {
+    padding: 40px 8%;
+    background-color: #0c0a09;
+    text-align: center;
+}
+
+.hours-section h2 {
+    color: #f59e0b;
+    margin-bottom: 20px;
+}
+
+.hours-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 500px;
+}
+
+.hours-table th, .hours-table td {
+    padding: 12px;
+    border: 1px solid #292524;
+}
+
+.hours-table th {
+    background-color: #292524;
+    color: #f59e0b;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1c1917;
+    color: #78716c;
+    font-size: 14px;
+    border-top: 1px solid #292524;
+}</code></pre>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function copyCode(id) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText);
+            alert("Code copied successfully! 🚀");
+        }
+    </script>
+</body>
+</html>
