@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrontendCraft | Free HTML & CSS Practice Projects with Source Code</title>
+    <title>FrontendCraft | Free HTML & CSS Practice Projects & Cheatsheets</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -11,8 +11,17 @@
 
     <!-- Top Navigation Bar -->
     <header class="navbar">
-        <div class="logo"><span class="highlight">Frontend</span>Craft 🚀</div>
-        <p class="tagline">Clean Code • No Inline CSS • Free Practice</p>
+        <div class="logo-container">
+            <a href="index.html" class="logo"><span class="highlight">Frontend</span>Craft 🚀</a>
+            <p class="tagline">Clean Code • No Inline CSS • Free Practice</p>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item active">Home</a>
+            <a href="projects.html" class="nav-item">Explore Projects</a>
+            <a href="cheatsheets.html" class="nav-item badge-nav">📑 Cheatsheets</a>
+        </nav>
     </header>
 
     <!-- Main Hero Section -->
@@ -20,11 +29,12 @@
         <span class="hero-badge">100% Free Source Code & Live Preview</span>
         
         <h1>Practice Your Skills with Most Easy-to-Understand Projects</h1>
-        <p class="hero-subtitle">Learn web development by building real-world HTML, CSS, and JavaScript projects without complex setups. Copy clean source code and run it directly in VS Code.</p>
+        <p class="hero-subtitle">Learn web development by building real-world HTML, CSS, and JavaScript projects. Access quick developer cheatsheets, clean source code, and run them directly in VS Code.</p>
         
-        <!-- Main CTA Button -->
+        <!-- Main CTA Button Group -->
         <div class="cta-box">
             <a href="projects.html" class="main-btn">🚀 Explore All Projects & Code</a>
+            <a href="cheatsheets.html" class="secondary-btn">📑 Quick Cheatsheets & Reference</a>
         </div>
 
         <!-- Quick Stats Banner -->
@@ -40,6 +50,30 @@
             <div class="stat-item">
                 <h3>Instant</h3>
                 <p>Live Website Preview</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Resource Hub Preview -->
+    <section class="student-hub-overview">
+        <h2 class="section-heading">⚡ Everything A Web Development Student Needs</h2>
+        <p class="section-subheading">One-stop resource hub designed to help you code, revise, and prepare faster.</p>
+
+        <div class="hub-cards-grid">
+            <div class="hub-card featured-hub">
+                <div class="hub-icon">📑</div>
+                <span class="hub-tag">Popular</span>
+                <h3>Developer Cheatsheets</h3>
+                <p>Instant reference guides for Flexbox, CSS Grid, DOM Methods, HTML5 Tags, and essential Git terminal commands.</p>
+                <a href="cheatsheets.html" class="btn btn-primary">Open Cheatsheets Hub →</a>
+            </div>
+
+            <div class="hub-card">
+                <div class="hub-icon">💻</div>
+                <span class="hub-tag basic-tag">Practice</span>
+                <h3>Beginner Projects</h3>
+                <p>Hands-on mini-projects built with pure HTML, CSS, and vanilla JavaScript for quick practice and portfolio building.</p>
+                <a href="projects.html" class="btn btn-secondary">View All Projects →</a>
             </div>
         </div>
     </section>

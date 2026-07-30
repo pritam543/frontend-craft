@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Cheatsheets | FrontendCraft - Quick Reference for Students</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="logo-container">
+            <a href="index.html" class="logo"><span class="highlight">Frontend</span>Craft 🚀</a>
+            <p class="tagline">Clean Code • No Inline CSS • Free Practice</p>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="projects.html" class="nav-item">Explore Projects</a>
+            <a href="cheatsheets.html" class="nav-item active badge-nav">📑 Cheatsheets</a>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="cheatsheets-container">
+        <div class="page-title">
+            <h1>⚡ Developer Quick Cheatsheets Hub</h1>
+            <p>Line-by-line explained code references for HTML, CSS, JavaScript, Git/GitHub, and Python.</p>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterCategory('all')">All Cheatsheets</button>
+            <button class="tab-btn" onclick="filterCategory('html')">🌐 HTML5</button>
+            <button class="tab-btn" onclick="filterCategory('css')">🎨 CSS3 Layouts</button>
+            <button class="tab-btn" onclick="filterCategory('js')">⚡ JavaScript</button>
+            <button class="tab-btn" onclick="filterCategory('git')">🚀 Git & GitHub</button>
+            <button class="tab-btn" onclick="filterCategory('python')">🐍 Python</button>
+        </div>
+
+        <!-- Cheatsheet Cards Grid -->
+        <div class="cheatsheet-grid">
+
+            <!-- Card 1: HTML5 Standard Structure -->
+            <div class="cheatsheet-card" data-category="html">
+                <h3>🌐 HTML5 Standard Structure</h3>
+                <p>Standard clean HTML template with external stylesheet linking.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="comment">&lt;!-- 1. Informs browser this is an HTML5 document --&gt;</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"en"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+  <span class="comment">&lt;!-- 2. Sets character encoding for international characters --&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="str">"UTF-8"</span><span class="tag">&gt;</span>
+  
+  <span class="comment">&lt;!-- 3. Makes website responsive on mobile phones --&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="str">"viewport"</span> <span class="attr">content</span>=<span class="str">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+  
+  <span class="tag">&lt;title&gt;</span>My Project Title<span class="tag">&lt;/title&gt;</span>
+  
+  <span class="comment">&lt;!-- 4. External CSS Linking (Recommended clean practice) --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+  <span class="comment">&lt;!-- 5. Page Header --&gt;</span>
+  <span class="tag">&lt;header&gt;</span>Navbar and Logo<span class="tag">&lt;/header&gt;</span>
+
+  <span class="comment">&lt;!-- 6. Main Content Area --&gt;</span>
+  <span class="tag">&lt;main&gt;</span>Page Content Here<span class="tag">&lt;/main&gt;</span>
+
+  <span class="comment">&lt;!-- 7. External JS Script (Loaded at end for performance) --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"script.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></div>
+            </div>
+
+            <!-- Card 2: HTML5 Form Elements -->
+            <div class="cheatsheet-card" data-category="html">
+                <h3>📝 HTML5 Form Essentials</h3>
+                <p>Clean inputs, labels, placeholders, and submit buttons.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="comment">&lt;!-- Form container pointing to backend endpoint --&gt;</span>
+<span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="str">"/submit"</span> <span class="attr">method</span>=<span class="str">"POST"</span><span class="tag">&gt;</span>
+
+  <span class="comment">&lt;!-- Text Input with descriptive label --&gt;</span>
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"username"</span><span class="tag">&gt;</span>Username:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"username"</span> <span class="attr">placeholder</span>=<span class="str">"Enter name"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+
+  <span class="comment">&lt;!-- Email Input (validates email syntax automatically) --&gt;</span>
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"user-email"</span><span class="tag">&gt;</span>Email Address:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span> <span class="attr">id</span>=<span class="str">"user-email"</span> <span class="attr">placeholder</span>=<span class="str">"name@email.com"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+
+  <span class="comment">&lt;!-- Dropdown Select Box --&gt;</span>
+  <span class="tag">&lt;select</span> <span class="attr">name</span>=<span class="str">"role"</span> <span class="attr">id</span>=<span class="str">"role"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="str">"student"</span><span class="tag">&gt;</span>Student<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="str">"developer"</span><span class="tag">&gt;</span>Developer<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;/select&gt;</span>
+
+  <span class="comment">&lt;!-- Submit Button --&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span>Register Now<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/form&gt;</span></div>
+            </div>
+
+            <!-- Card 3: CSS Flexbox Layout -->
+            <div class="cheatsheet-card" data-category="css">
+                <h3>📦 CSS Flexbox Essentials</h3>
+                <p>Quick container properties for flexible responsive layouts.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+.container {
+  <span class="comment">/* 1. Turns parent element into flex container */</span>
+  <span class="attr">display</span>: flex;
+
+  <span class="comment">/* 2. Horizontal alignment: center | space-between | space-around */</span>
+  <span class="attr">justify-content</span>: center;
+
+  <span class="comment">/* 3. Vertical alignment: flex-start | flex-end | center */</span>
+  <span class="attr">align-items</span>: center;
+
+  <span class="comment">/* 4. Direction of items: row (default) | column */</span>
+  <span class="attr">flex-direction</span>: row;
+
+  <span class="comment">/* 5. Wraps items to next line on small screens */</span>
+  <span class="attr">flex-wrap</span>: wrap;
+
+  <span class="comment">/* 6. Spacing gap between child elements */</span>
+  <span class="attr">gap</span>: <span class="num">20px</span>;
+}</div>
+            </div>
+
+            <!-- Card 4: CSS Center Anything & Grid -->
+            <div class="cheatsheet-card" data-category="css">
+                <h3>🎯 Center Any Element in CSS</h3>
+                <p>Modern CSS Grid trick to center content horizontally & vertically.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="comment">/* Method 1: The Modern CSS Grid Trick */</span>
+.parent-element {
+  <span class="attr">display</span>: grid;
+  <span class="attr">place-items</span>: center; <span class="comment">/* Centers both X and Y axis instantly */</span>
+  <span class="attr">min-height</span>: <span class="num">100vh</span>;   <span class="comment">/* Full screen height */</span>
+}
+
+<span class="comment">/* Method 2: Responsive Card Grid System */</span>
+.card-grid {
+  <span class="attr">display</span>: grid;
+  <span class="comment">/* Auto-fits columns based on available screen width */</span>
+  <span class="attr">grid-template-columns</span>: repeat(auto-fit, minmax(<span class="num">280px</span>, <span class="num">1fr</span>));
+  <span class="attr">gap</span>: <span class="num">24px</span>; <span class="comment">/* Gap between cards */</span>
+}</div>
+            </div>
+
+            <!-- Card 5: JS DOM Selectors & Events -->
+            <div class="cheatsheet-card" data-category="js">
+                <h3>⚡ JavaScript DOM Selectors</h3>
+                <p>Selecting HTML elements and attaching click event listeners.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="comment">// 1. Select single element by CSS class or ID</span>
+<span class="kw">const</span> mainTitle = document.<span class="func">querySelector</span>(<span class="str">'.page-title'</span>);
+<span class="kw">const</span> submitBtn = document.<span class="func">querySelector</span>(<span class="str">'#submit-btn'</span>);
+
+<span class="comment">// 2. Select multiple elements (returns a NodeList)</span>
+<span class="kw">const</span> allCards = document.<span class="func">querySelectorAll</span>(<span class="str">'.cheatsheet-card'</span>);
+
+<span class="comment">// 3. Add Click Event Listener</span>
+submitBtn.<span class="func">addEventListener</span>(<span class="str">'click'</span>, () =&gt; {
+  <span class="comment">// Toggle a CSS class on click</span>
+  mainTitle.classList.<span class="func">toggle</span>(<span class="str">'active'</span>);
+  
+  <span class="comment">// Change text dynamically</span>
+  mainTitle.innerText = <span class="str">"Button Clicked Successfully!"</span>;
+});</div>
+            </div>
+
+            <!-- Card 6: JS Array Methods -->
+            <div class="cheatsheet-card" data-category="js">
+                <h3>🔄 Essential JS Array Methods</h3>
+                <p>Quick reference for map, filter, find, and forEach methods.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="kw">const</span> numbers = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>, <span class="num">50</span>];
+
+<span class="comment">// 1. .map() - Transforms every item and returns new array</span>
+<span class="kw">const</span> doubled = numbers.<span class="func">map</span>(num =&gt; num * <span class="num">2</span>); 
+<span class="comment">// Result: [20, 40, 60, 80, 100]</span>
+
+<span class="comment">// 2. .filter() - Filters items based on condition</span>
+<span class="kw">const</span> greaterThan25 = numbers.<span class="func">filter</span>(num =&gt; num &gt; <span class="num">25</span>);
+<span class="comment">// Result: [30, 40, 50]</span>
+
+<span class="comment">// 3. .find() - Returns FIRST matching item</span>
+<span class="kw">const</span> found = numbers.<span class="func">find</span>(num =&gt; num === <span class="num">30</span>); 
+<span class="comment">// Result: 30</span>
+
+<span class="comment">// 4. .forEach() - Loops through array items</span>
+numbers.<span class="func">forEach</span>(num =&gt; console.<span class="func">log</span>(<span class="str">"Number:"</span>, num));</div>
+            </div>
+
+            <!-- Card 7: Git & GitHub Terminal Commands -->
+            <div class="cheatsheet-card" data-category="git">
+                <h3>🚀 Top Git & GitHub Commands</h3>
+                <p>Daily git commands every student needs to publish projects online.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="comment"># 1. Initialize a new git repository in local project folder</span>
+git init
+
+<span class="comment"># 2. Stage all changed files for commit</span>
+git add .
+
+<span class="comment"># 3. Commit staged changes with descriptive message</span>
+git commit -m <span class="str">"Updated code and added new features"</span>
+
+<span class="comment"># 4. Rename default branch to 'main'</span>
+git branch -M main
+
+<span class="comment"># 5. Link local repository to remote GitHub repository</span>
+git remote add origin YOUR_GITHUB_REPO_URL
+
+<span class="comment"># 6. Push local code to GitHub main branch</span>
+git push -u origin main
+
+<span class="comment"># 7. Pull latest code updates from GitHub</span>
+git pull origin main</div>
+            </div>
+
+            <!-- Card 8: Python Basics & Data Structures -->
+            <div class="cheatsheet-card" data-category="python">
+                <h3>🐍 Python Basics & Data Structures</h3>
+                <p>Core syntax for variables, lists, dictionaries, and functions.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="comment"># 1. Variables and Data Types</span>
+user_name = <span class="str">"Pritam"</span>      <span class="comment"># String</span>
+age = <span class="num">22</span>                 <span class="comment"># Integer</span>
+is_student = <span class="kw">True</span>        <span class="comment"># Boolean</span>
+
+<span class="comment"># 2. Lists (Ordered collection, mutable)</span>
+skills = [<span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"Python"</span>]
+skills.<span class="func">append</span>(<span class="str">"JavaScript"</span>)  <span class="comment"># Add new item</span>
+
+<span class="comment"># 3. Dictionaries (Key-Value pairs)</span>
+student = {
+    <span class="str">"name"</span>: <span class="str">"Pritam"</span>,
+    <span class="str">"course"</span>: <span class="str">"Web Development"</span>,
+    <span class="str">"year"</span>: <span class="num">2026</span>
+}
+print(student[<span class="str">"name"</span>])  <span class="comment"># Output: Pritam</span>
+
+<span class="comment"># 4. Function Definition</span>
+<span class="kw">def</span> <span class="func">greet_student</span>(name):
+    <span class="kw">return</span> f<span class="str">"Welcome to FrontendCraft, {name}!"</span>
+
+<span class="comment"># Call Function</span>
+message = <span class="func">greet_student</span>(user_name)
+print(message)</div>
+            </div>
+
+            <!-- Card 9: Python Loops & Conditionals -->
+            <div class="cheatsheet-card" data-category="python">
+                <h3>🔄 Python Loops & Conditionals</h3>
+                <p>Clean control flow syntax for student automation and logic.</p>
+                <div class="code-box">
+                    <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+<span class="comment"># 1. Conditional Statements (If-Elif-Else)</span>
+score = <span class="num">85</span>
+
+<span class="kw">if</span> score &gt;= <span class="num">90</span>:
+    print(<span class="str">"Grade: A+"</span>)
+<span class="kw">elif</span> score &gt;= <span class="num">75</span>:
+    print(<span class="str">"Grade: A"</span>)
+<span class="kw">else</span>:
+    print(<span class="str">"Keep practicing!"</span>)
+
+<span class="comment"># 2. For Loop (Iterating over a list)</span>
+projects = [<span class="str">"Portfolio"</span>, <span class="str">"Weather App"</span>, <span class="str">"Calculator"</span>]
+
+<span class="kw">for</span> item <span class="kw">in</span> projects:
+    print(f<span class="str">"Project Name: {item}"</span>)
+
+<span class="comment"># 3. While Loop</span>
+count = <span class="num">1</span>
+<span class="kw">while</span> count &lt;= <span class="num">3</span>:
+    print(f<span class="str">"Attempt: {count}"</span>)
+    count += <span class="num">1</span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 <strong>FrontendCraft</strong> | Build Your Web Development Career with Practical Code 💻</p>
+    </footer>
+
+    <!-- Interactive Filter & Copy Script -->
+    <script>
+        // Category Filter Function
+        function filterCategory(cat) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.cheatsheet-card').forEach(card => {
+                if(cat === 'all' || card.dataset.category === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 1-Click Copy Snippet Function
+        function copySnippet(btn) {
+            const codeBox = btn.parentElement;
+            const textToCopy = codeBox.innerText.replace('Copy', '').replace('Copied!', '').trim();
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                btn.innerText = 'Copied!';
+                btn.style.backgroundColor = '#38bdf8';
+                btn.style.color = '#0b0f19';
+                setTimeout(() => {
+                    btn.innerText = 'Copy';
+                    btn.style.backgroundColor = '#1e293b';
+                    btn.style.color = '#94a3b8';
+                }, 2000);
+            }).catch(err => {
+                // Fallback for iframe/execCommand
+                const textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                btn.innerText = 'Copied!';
+                setTimeout(() => {
+                    btn.innerText = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
