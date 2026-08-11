@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Quiz App | FrontendCraft</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h2>JavaScript Quiz App</h2>
+            <div id="timer">Time: <span id="time">15</span>s</div>
+        </div>
+        
+        <div id="quiz-body">
+            <h3 id="question">Question goes here...</h3>
+            <div class="options">
+                <button class="btn" onclick="selectOption(0)"></button>
+                <button class="btn" onclick="selectOption(1)"></button>
+                <button class="btn" onclick="selectOption(2)"></button>
+                <button class="btn" onclick="selectOption(3)"></button>
+            </div>
+        </div>
+
+        <div id="result-screen" class="hidden">
+            <h3>Quiz Completed! 🎉</h3>
+            <p>Your Score: <span id="score">0</span> / <span id="total">0</span></p>
+            <button id="restart-btn" onclick="restartQuiz()">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
