@@ -1,36 +1,310 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Quiz App | FrontendCraft</title>
-    <link rel="stylesheet" href="style.css">
+    <title>05. Interactive Quiz App | FrontendCraft</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .code-title {
+            color: #38bdf8;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <div class="quiz-container">
-        <div class="quiz-header">
-            <h2>JavaScript Quiz App</h2>
-            <div id="timer">Time: <span id="time">15</span>s</div>
+
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="../../projects.html" class="back-home">⬅ Back to Projects</a>
         </div>
+        <div class="nav-links">
+            <a href="demo.html" target="_blank" class="btn btn-primary" style="padding: 8px 18px; font-size: 13px;">Live Preview 🚀</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
         
-        <div id="quiz-body">
-            <h3 id="question">Question goes here...</h3>
-            <div class="options">
-                <button class="btn" onclick="selectOption(0)"></button>
-                <button class="btn" onclick="selectOption(1)"></button>
-                <button class="btn" onclick="selectOption(2)"></button>
-                <button class="btn" onclick="selectOption(3)"></button>
+        <div class="page-title">
+            <h1>05. Interactive Quiz App</h1>
+            <p>JavaScript based multiple-choice quiz app with live countdown timer and random question shuffle.</p>
+        </div>
+
+        <!-- SOURCE CODE SECTION -->
+        <section class="cheatsheet-card" style="margin-top: 30px;">
+            <h2 style="color: #f8fafc; font-size: 22px; margin-bottom: 5px;">💻 Complete Source Code</h2>
+            <p style="color: #94a3b8; font-size: 14px;">Copy the complete HTML, CSS, and JS code below to use in your own project.</p>
+
+            <!-- 1. HTML CODE -->
+            <div class="code-header">
+                <span class="code-title">📄 index.html</span>
             </div>
-        </div>
+            <div class="code-box">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;JS Quiz App | FrontendCraft&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="quiz-container"&gt;
+        &lt;div class="quiz-header"&gt;
+            &lt;h2&gt;JavaScript Quiz App&lt;/h2&gt;
+            &lt;div id="timer"&gt;Time: &lt;span id="time"&gt;15&lt;/span&gt;s&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id="quiz-body"&gt;
+            &lt;h3 id="question"&gt;Question goes here...&lt;/h3&gt;
+            &lt;div class="options"&gt;
+                &lt;button class="btn" onclick="selectOption(0)"&gt;&lt;/button&gt;
+                &lt;button class="btn" onclick="selectOption(1)"&gt;&lt;/button&gt;
+                &lt;button class="btn" onclick="selectOption(2)"&gt;&lt;/button&gt;
+                &lt;button class="btn" onclick="selectOption(3)"&gt;&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
 
-        <div id="result-screen" class="hidden">
-            <h3>Quiz Completed! 🎉</h3>
-            <p>Your Score: <span id="score">0</span> / <span id="total">0</span></p>
-            <button id="restart-btn" onclick="restartQuiz()">Try Again</button>
-        </div>
-    </div>
+        &lt;div id="result-screen" class="hidden"&gt;
+            &lt;h3&gt;Quiz Completed! 🎉&lt;/h3&gt;
+            &lt;p&gt;Your Score: &lt;span id="score"&gt;0&lt;/span&gt; / &lt;span id="total"&gt;0&lt;/span&gt;&lt;/p&gt;
+            &lt;button id="restart-btn" onclick="restartQuiz()"&gt;Try Again&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 
-    <!-- Script version updated to prevent caching -->
-    <script src="script.js?v=2.0"></script>
+    &lt;script src="script.js?v=2.0"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <!-- 2. CSS CODE -->
+            <div class="code-header">
+                <span class="code-title">🎨 style.css</span>
+            </div>
+            <div class="code-box">
+                <pre><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.quiz-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 450px;
+    padding: 25px;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.quiz-header h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+#timer {
+    font-weight: bold;
+    color: #764ba2;
+    background: #f0e6ff;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+#question {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: #764ba2;
+    color: #fff;
+    border-color: #764ba2;
+}
+
+.hidden {
+    display: none;
+}
+
+#result-screen {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#result-screen h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#restart-btn {
+    margin-top: 15px;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}</code></pre>
+            </div>
+
+            <!-- 3. JS CODE -->
+            <div class="code-header">
+                <span class="code-title">⚡ script.js</span>
+            </div>
+            <div class="code-box">
+                <pre><code>const allQuestions = [
+    {
+        question: "Which keyword is used to declare a variable in JS?",
+        options: ["var", "let", "const", "All of the above"],
+        correct: 3
+    },
+    {
+        question: "What does HTML stand for?",
+        options: ["Hyper Text Markup Language", "High Text Marking Language", "Hyper Tabular Markup Language", "None"],
+        correct: 0
+    },
+    {
+        question: "Which CSS property changes text color?",
+        options: ["text-style", "color", "font-color", "background-color"],
+        correct: 1
+    },
+    {
+        question: "Which symbol is used for single-line comments in JS?",
+        options: ["<!-- -->", "//", "/* */", "#"],
+        correct: 1
+    }
+];
+
+let quizData = [];
+let currentIdx = 0;
+let score = 0;
+let timeLeft = 15;
+let timer;
+
+const qEl = document.getElementById("question");
+const btns = document.querySelectorAll(".btn");
+const timeEl = document.getElementById("time");
+
+function shuffleQuestions() {
+    quizData = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 4);
+}
+
+function loadQuestion() {
+    clearInterval(timer);
+    timeLeft = 15;
+    timeEl.textContent = timeLeft;
+    
+    timer = setInterval(() => {
+        timeLeft--;
+        timeEl.textContent = timeLeft;
+        if(timeLeft <= 0) {
+            nextQuestion();
+        }
+    }, 1000);
+
+    const q = quizData[currentIdx];
+    qEl.textContent = `${currentIdx + 1}. ${q.question}`;
+    btns.forEach((btn, index) => {
+        btn.textContent = q.options[index];
+    });
+}
+
+function selectOption(index) {
+    if(index === quizData[currentIdx].correct) {
+        score++;
+    }
+    nextQuestion();
+}
+
+function nextQuestion() {
+    currentIdx++;
+    if(currentIdx < quizData.length) {
+        loadQuestion();
+    } else {
+        showResults();
+    }
+}
+
+function showResults() {
+    clearInterval(timer);
+    document.getElementById("quiz-body").classList.add("hidden");
+    document.getElementById("timer").classList.add("hidden");
+    document.getElementById("result-screen").classList.remove("hidden");
+    document.getElementById("score").textContent = score;
+    document.getElementById("total").textContent = quizData.length;
+}
+
+function restartQuiz() {
+    currentIdx = 0;
+    score = 0;
+    document.getElementById("quiz-body").classList.remove("hidden");
+    document.getElementById("timer").classList.remove("hidden");
+    document.getElementById("result-screen").classList.add("hidden");
+    shuffleQuestions();
+    loadQuestion();
+}
+
+shuffleQuestions();
+loadQuestion();</code></pre>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 <strong>FrontendCraft</strong> | Project Source Code View</p>
+    </footer>
+
 </body>
 </html>
