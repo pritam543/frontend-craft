@@ -3,22 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App - Live Demo</title>
+    <title>05. Interactive Quiz App - Live Demo | FrontendCraft</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        iframe {
+        .app-navbar {
+            background-color: #111827;
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1f2937;
             width: 100%;
-            height: 100%;
-            border: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .back-btn {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .main-wrapper {
+            margin-top: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <iframe src="index.html?v=2.0"></iframe>
+
+    <!-- TOP NAVBAR -->
+    <header class="app-navbar">
+        <div>
+            <a href="../../projects.html" class="back-btn">⬅ Back to Projects</a>
+        </div>
+        <div>
+            <a href="index.html" class="btn btn-glow" style="padding: 6px 16px; font-size: 13px; text-decoration: none; border-radius: 6px; display: inline-block;">View Source Code 💻</a>
+        </div>
+    </header>
+
+    <!-- LIVE QUIZ APP BODY -->
+    <div class="main-wrapper">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>JavaScript Quiz App</h2>
+                <div id="timer">Time: <span id="time">15</span>s</div>
+            </div>
+            
+            <div id="quiz-body">
+                <h3 id="question">Question goes here...</h3>
+                <div class="options">
+                    <button class="btn" onclick="selectOption(0)"></button>
+                    <button class="btn" onclick="selectOption(1)"></button>
+                    <button class="btn" onclick="selectOption(2)"></button>
+                    <button class="btn" onclick="selectOption(3)"></button>
+                </div>
+            </div>
+
+            <div id="result-screen" class="hidden">
+                <h3>Quiz Completed! 🎉</h3>
+                <p>Your Score: <span id="score">0</span> / <span id="total">0</span></p>
+                <button id="restart-btn" onclick="restartQuiz()">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT FOR QUIZ LOGIC -->
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>
