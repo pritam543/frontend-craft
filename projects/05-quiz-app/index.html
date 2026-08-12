@@ -69,10 +69,10 @@
         &lt;div id="quiz-body"&gt;
             &lt;h3 id="question"&gt;Question goes here...&lt;/h3&gt;
             &lt;div class="options"&gt;
-                &lt;button class="btn" onclick="selectOption(0)"&gt;&lt;/button&gt;
-                &lt;button class="btn" onclick="selectOption(1)"&gt;&lt;/button&gt;
-                &lt;button class="btn" onclick="selectOption(2)"&gt;&lt;/button&gt;
-                &lt;button class="btn" onclick="selectOption(3)"&gt;&lt;/button&gt;
+                &lt;button class="btn option-btn" onclick="selectOption(0)"&gt;&lt;/button&gt;
+                &lt;button class="btn option-btn" onclick="selectOption(1)"&gt;&lt;/button&gt;
+                &lt;button class="btn option-btn" onclick="selectOption(2)"&gt;&lt;/button&gt;
+                &lt;button class="btn option-btn" onclick="selectOption(3)"&gt;&lt;/button&gt;
             &lt;/div&gt;
         &lt;/div&gt;
 
@@ -93,23 +93,7 @@
                 <span class="code-title">🎨 style.css</span>
             </div>
             <div class="code-box">
-                <pre><code>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.quiz-container {
+                <pre><code>.quiz-container {
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -117,82 +101,16 @@ body {
     max-width: 450px;
     padding: 25px;
 }
-
-.quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
-
-.quiz-header h2 {
-    font-size: 20px;
-    color: #333;
-}
-
-#timer {
-    font-weight: bold;
-    color: #764ba2;
-    background: #f0e6ff;
-    padding: 5px 12px;
-    border-radius: 20px;
-}
-
-#question {
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-.options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.btn {
+.option-btn {
     background: #f8f9fa;
     border: 2px solid #e9ecef;
     padding: 12px 15px;
     border-radius: 8px;
-    font-size: 15px;
     cursor: pointer;
-    text-align: left;
-    transition: all 0.2s ease;
 }
-
-.btn:hover {
+.option-btn:hover {
     background: #764ba2;
     color: #fff;
-    border-color: #764ba2;
-}
-
-.hidden {
-    display: none;
-}
-
-#result-screen {
-    text-align: center;
-    padding: 20px 0;
-}
-
-#result-screen h3 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-#restart-btn {
-    margin-top: 15px;
-    background: #667eea;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
 }</code></pre>
             </div>
 
@@ -211,86 +129,24 @@ body {
         question: "What does HTML stand for?",
         options: ["Hyper Text Markup Language", "High Text Marking Language", "Hyper Tabular Markup Language", "None"],
         correct: 0
-    },
-    {
-        question: "Which CSS property changes text color?",
-        options: ["text-style", "color", "font-color", "background-color"],
-        correct: 1
-    },
-    {
-        question: "Which symbol is used for single-line comments in JS?",
-        options: ["<!-- -->", "//", "/* */", "#"],
-        correct: 1
     }
 ];
 
 let quizData = [];
 let currentIdx = 0;
 let score = 0;
-let timeLeft = 15;
-let timer;
-
-const qEl = document.getElementById("question");
-const btns = document.querySelectorAll(".btn");
-const timeEl = document.getElementById("time");
 
 function shuffleQuestions() {
     quizData = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 4);
 }
 
 function loadQuestion() {
-    clearInterval(timer);
-    timeLeft = 15;
-    timeEl.textContent = timeLeft;
-    
-    timer = setInterval(() => {
-        timeLeft--;
-        timeEl.textContent = timeLeft;
-        if(timeLeft <= 0) {
-            nextQuestion();
-        }
-    }, 1000);
-
     const q = quizData[currentIdx];
-    qEl.textContent = `${currentIdx + 1}. ${q.question}`;
+    document.getElementById("question").textContent = `${currentIdx + 1}. ${q.question}`;
+    const btns = document.querySelectorAll(".option-btn");
     btns.forEach((btn, index) => {
         btn.textContent = q.options[index];
     });
-}
-
-function selectOption(index) {
-    if(index === quizData[currentIdx].correct) {
-        score++;
-    }
-    nextQuestion();
-}
-
-function nextQuestion() {
-    currentIdx++;
-    if(currentIdx < quizData.length) {
-        loadQuestion();
-    } else {
-        showResults();
-    }
-}
-
-function showResults() {
-    clearInterval(timer);
-    document.getElementById("quiz-body").classList.add("hidden");
-    document.getElementById("timer").classList.add("hidden");
-    document.getElementById("result-screen").classList.remove("hidden");
-    document.getElementById("score").textContent = score;
-    document.getElementById("total").textContent = quizData.length;
-}
-
-function restartQuiz() {
-    currentIdx = 0;
-    score = 0;
-    document.getElementById("quiz-body").classList.remove("hidden");
-    document.getElementById("timer").classList.remove("hidden");
-    document.getElementById("result-screen").classList.add("hidden");
-    shuffleQuestions();
-    loadQuestion();
 }
 
 shuffleQuestions();
